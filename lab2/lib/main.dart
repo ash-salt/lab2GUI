@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/pages/main_view.dart';
+import 'package:lab2/widgets/difficulty_control.dart';
+import 'package:lab2/widgets/ingredient_control.dart';
+import 'package:lab2/widgets/kitchen_control.dart';
+import 'package:lab2/widgets/price_control.dart';
+import 'package:lab2/widgets/time_control.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,13 +28,26 @@ class MyApp extends StatelessWidget {
     return Container(
         width: width,
         color: const Color.fromARGB(255, 193, 210, 218),
-        child: Column(children: [Text("Receptsök"), Text("Hitta ett recept som passar dig genom att ändra inställningarna nedanför")])
+        child: Column(
+          children: [
+            Text("Receptsök"), 
+            Text("Hitta ett recept som passar dig genom att ändra inställningarna nedanför"),
+            Row(children: [Text("Ingrediens:"), IngredientControl()]),
+            Row(children: [Text("Kök:"), KitchenControl()]),
+            SizedBox(child: Text("\nSvårighetsgrad")),
+            DifficultyControl(),
+            Text("Maxpris"),
+            PriceControl(),
+            Text("Maxtid"),
+            TimeControl(),
+          ]
+        )
     );
   }
 
   Widget _recipeArea(context) {
     return Expanded(
-        child: Container(color: const Color.fromARGB(255, 204, 216, 176)),
+      child: Container(color: const Color.fromARGB(255, 204, 216, 176)),
     );
   }
 }

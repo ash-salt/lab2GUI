@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/util/cuisine.dart';
 
-class IngredientControl extends StatelessWidget {
-  const IngredientControl({super.key});
+class KitchenControl extends StatelessWidget {
+  const KitchenControl({super.key});
 
   @override
   Widget build(BuildContext context) {
