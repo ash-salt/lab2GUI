@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/util/main_ingredient.dart';
+import 'package:provider/provider.dart';
 
 class IngredientControl extends StatelessWidget {
   const IngredientControl({super.key});
@@ -10,7 +12,8 @@ class IngredientControl extends StatelessWidget {
   Widget build(BuildContext context) {
 
     const labels = MainIngredient.labels;
-
+    var recipeHandler = Provider.of<RecipeHandler>(context, listen: false);
+    
     return DropdownMenu<String>(
       width: 164,
       enableFilter: false,      // Disables filtering (prevents typing)
@@ -23,7 +26,7 @@ class IngredientControl extends StatelessWidget {
            label: labels[i],
         ),
       ],
-      onSelected: (value){},
+      onSelected: (value){recipeHandler.setMainIngredient(value);},
     );
   }
 }
