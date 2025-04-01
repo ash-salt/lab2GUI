@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/pages/main_view.dart';
+import 'package:lab2/ui_controller.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingredient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
 import 'package:lab2/widgets/price_control.dart';
+import 'package:lab2/widgets/recipe_detail.dart';
 import 'package:lab2/widgets/recipe_list.dart';
 import 'package:lab2/widgets/time_control.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +16,9 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => RecipeHandler()),
+        ChangeNotifierProvider(create: (context) => UIController()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Row(children: [_controlPanel(context), _recipeArea(context)]),
+        body: Row(children: [_controlPanel(context), RecipeArea()]),
       )
     );
   }
@@ -54,10 +57,24 @@ class MyApp extends StatelessWidget {
         )
     );
   }
+}
 
-  Widget _recipeArea(context) {
-  return Expanded(
-    child: RecipeList(),
- );
+
+
+class RecipeArea extends StatelessWidget {
+  const RecipeArea({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var uiController = context.watch<UIController>();
+    Widget contents;
+
+    if (uiController.showRecipeList) {
+       contents = RecipeList();
+    } else {
+       contents = RecipeDetail(uiController.selectedRecipe!);
+    }
+    return Expanded(child: contents);
+  }
 }
-}
+

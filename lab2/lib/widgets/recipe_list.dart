@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
+import 'package:lab2/ui_controller.dart';
+import 'package:lab2/widgets/recipe_list_item.dart';
 import 'package:provider/provider.dart';
 
 class RecipeList extends StatelessWidget {
@@ -9,18 +11,10 @@ class RecipeList extends StatelessWidget {
   Widget build(BuildContext context) {
     var recipeHandler = context.watch<RecipeHandler>();
     var recipes = recipeHandler.bestMatches;
+    var uiController = Provider.of<UIController>(context, listen: false);
     return ListView(
       children: recipes.map((recipe) {
-        return ListTile(
-          leading: SizedBox(
-            width: 50,
-            height: 50,
-            child: recipe.image,
-          ),
-          title: Text(recipe.name),
-          onTap: () {},
-          shape: Border(bottom: BorderSide(color: Colors.black), top: BorderSide(color: Colors.black), right: BorderSide(color: Colors.black), left: BorderSide(color: Colors.black))
-        );
+        return RecipeListItem(recipe, onTap: () {uiController.selectRecipe(recipe);});
       }).toList(),
     );
   }
