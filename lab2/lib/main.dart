@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/pages/main_view.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingredient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
 import 'package:lab2/widgets/price_control.dart';
+import 'package:lab2/widgets/recipe_list.dart';
 import 'package:lab2/widgets/time_control.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RecipeHandler()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -46,8 +56,8 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _recipeArea(context) {
-    return Expanded(
-      child: Container(color: const Color.fromARGB(255, 204, 216, 176)),
-    );
-  }
+  return Expanded(
+    child: RecipeList(),
+ );
+}
 }
