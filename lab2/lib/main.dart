@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
-import 'package:lab2/pages/main_view.dart';
 import 'package:lab2/ui_controller.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingredient_control.dart';
