@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lab2/app_theme.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/ui_controller.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
@@ -30,6 +32,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: AppTheme.colorScheme,
+        textTheme: AppTheme.textTheme,
+      ),
       home: Scaffold(
         body: Row(children: [_controlPanel(context), RecipeArea()]),
       )
