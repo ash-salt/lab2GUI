@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/app_theme.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/util/difficulty.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,12 @@ class _DifficultyControlState extends State<DifficultyControl> {
         for (final label in Difficulty.labels)
           RadioListTile<String>(
             dense: true,
-            title: Text(label),
+            title: 
+              Row(children: [
+                label!="Alla"? Difficulty.icon(label, width: 50) ?? SizedBox():SizedBox(width:0), 
+                SizedBox(width: label!="Alla"? AppTheme.paddingMedium : 0), 
+                Text(label)
+              ]),
             value: label,
             groupValue: _difficulty,
             onChanged: (value) {

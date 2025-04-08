@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lab2/app_theme.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/ui_controller.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingredient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
+import 'package:lab2/widgets/logo.dart';
 import 'package:lab2/widgets/price_control.dart';
 import 'package:lab2/widgets/recipe_detail.dart';
 import 'package:lab2/widgets/recipe_list.dart';
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: AppTheme.colorScheme,
         textTheme: AppTheme.textTheme,
+        
       ),
       home: Scaffold(
         body: Row(children: [_controlPanel(context), RecipeArea()]),
@@ -48,10 +49,9 @@ class MyApp extends StatelessWidget {
         color: const Color.fromARGB(255, 193, 210, 218),
         child: Column(
           children: [
-            Text("Receptsök"), 
-            Text("Hitta ett recept som passar dig genom att ändra inställningarna nedanför"),
-            Row(children: [Text("Ingrediens:"), IngredientControl()]),
-            Row(children: [Text("Kök:"), KitchenControl()]),
+            Logo(),
+            IngredientControl(),
+            KitchenControl(),
             SizedBox(child: Text("\nSvårighetsgrad")),
             DifficultyControl(),
             Text("Maxpris"),
