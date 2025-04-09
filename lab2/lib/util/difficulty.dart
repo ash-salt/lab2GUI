@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:lab2/constants/assets.dart';
 
@@ -18,7 +20,6 @@ class Difficulty {
 
   static Image? icon(String difficulty, {double width = 16}) {
     var assetName = '';
-
     switch (difficulty) {
       case easy:
         assetName = Assets.difficultyEasy;
