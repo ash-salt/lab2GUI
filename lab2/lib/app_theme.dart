@@ -11,7 +11,10 @@ class AppTheme {
   static const double paddingHuge = 32.0;
   static TextTheme textTheme = GoogleFonts.nunitoTextTheme();
 
-
+  static const TextStyle mediumHeading = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w400,
+  );
 
  // App color
   static ColorScheme colorScheme = ColorScheme.fromSeed(
