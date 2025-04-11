@@ -13,6 +13,33 @@ class RecipeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var uiController = Provider.of<UIController>(context, listen: false);
+    return Column(
+      
+      children: [
+        IconButton(
+          alignment: Alignment.topRight,
+          icon: Icon(Icons.close),
+          onPressed: () {
+            uiController.deselectRecipe();
+          },
+        ),
+        Row(
+          children: [
+
+          ],
+        )
+      ]
+    );
+  }
+
+
+
+
+
+  /*
+  @override
+  Widget build(BuildContext context) {
+    var uiController = Provider.of<UIController>(context, listen: false);
 
     return Row(
       spacing: 30,
@@ -29,5 +56,5 @@ class RecipeDetail extends StatelessWidget {
       ]
     );
   } 
-
+  */
 }
