@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: AppTheme.colorScheme,
         textTheme: AppTheme.textTheme,
@@ -45,22 +46,35 @@ class MyApp extends StatelessWidget {
 
   Widget _controlPanel(context, {double width = 320}) {
     return Container(
-        width: width,
-        color: const Color.fromARGB(255, 193, 210, 218),
+      width: width,
+      color: const Color.fromARGB(255, 193, 210, 218),
+      child: Padding(
+        padding: const EdgeInsets.only(left: AppTheme.paddingMedium), // You can replace 16.0 with AppTheme.paddingHuge if desired
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Logo(),
+            SizedBox(
+              width: width - AppTheme.paddingHuge,
+              height: 2 * AppTheme.paddingHuge,
+              child: Text(
+                "Hitta ett recept som passar dig genom att ändra inställningarna nedanför",
+              ),
+            ),
             IngredientControl(),
             KitchenControl(),
-            SizedBox(height: AppTheme.paddingHuge,),
-            SizedBox(child: Text("Svårighetsgrad")),
+            SizedBox(height: AppTheme.paddingHuge),
+            SizedBox(child: Text("Svårighetsgrad", style: TextStyle(fontWeight: FontWeight.bold))),
+            SizedBox(height: AppTheme.paddingTiny),
             DifficultyControl(),
-            Text("Maxpris"),
+            SizedBox(height: AppTheme.paddingTiny), 
+            Text("Maxpris", style: TextStyle(fontWeight: FontWeight.bold)),
             PriceControl(),
-            Text("Maxtid"),
+            Text("Maxtid", style: TextStyle(fontWeight: FontWeight.bold)),
             TimeControl(),
-          ]
-        )
+          ],
+        ),
+      ),
     );
   }
 }

@@ -32,6 +32,7 @@ class RecipeListItem extends StatelessWidget {
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(recipe.name, style: AppTheme.mediumHeading),
                     Text(

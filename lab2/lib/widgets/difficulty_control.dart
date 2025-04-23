@@ -25,7 +25,7 @@ class _DifficultyControlState extends State<DifficultyControl> {
               Row(children: [
                 label!="Alla"? Difficulty.icon(label, width: 50) ?? SizedBox():SizedBox(width:0), 
                 SizedBox(width: label!="Alla"? AppTheme.paddingMedium : 0), 
-                Text(label)
+                Text(label, style: TextStyle(color: Colors.black))
               ]),
             value: label,
             groupValue: _difficulty,
